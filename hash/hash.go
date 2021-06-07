@@ -38,6 +38,17 @@ func (h *HashTable) get(key string) string {
 	return ""
 }
 
+func (h *HashTable) keys() []string {
+	var keysArray []string
+	for _, v := range h.data {
+		for _, innerV := range v {
+			keysArray = append(keysArray, innerV[0])
+		}
+	}
+
+	return keysArray
+}
+
 func main() {
 	h := NewHashTable()
 	h.set("grapes", "10000")
@@ -46,4 +57,6 @@ func main() {
 	fmt.Println(h.get("apples"))
 
 	fmt.Println(h.data)
+
+	fmt.Println(h.keys())
 }

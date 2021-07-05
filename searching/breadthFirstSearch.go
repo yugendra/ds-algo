@@ -118,6 +118,23 @@ func (b *BinarySearchTree) breadthFirstSearch() []int {
 	return bfsList
 }
 
+func (b *BinarySearchTree) breadthFirstSearchR(q *queue, list []int) []int {
+	if q.first == nil {
+		return list
+	}
+
+	tNode := q.dequeue()
+	list = append(list, tNode.Value)
+	if tNode.Left != nil {
+		q.enqueue(tNode.Left)
+	}
+	if tNode.Right != nil {
+		q.enqueue(tNode.Right)
+	}
+
+	return b.breadthFirstSearchR(q, list)
+}
+
 func main() {
 
 	b := NewBinarySearchTree()
@@ -131,5 +148,11 @@ func main() {
 
 	bfsArray := b.breadthFirstSearch()
 	fmt.Println(bfsArray)
+
+	q := newQueue()
+	q.enqueue(b.Root)
+	var list []int
+	bfsArrayR := b.breadthFirstSearchR(q, list)
+	fmt.Println(bfsArrayR)
 
 }

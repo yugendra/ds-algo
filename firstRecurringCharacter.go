@@ -18,3 +18,4 @@ func main() {
 	fmt.Println(firstRecurringCharacter([]int{2, 1, 1, 2, 3, 5, 1, 2, 4}))
 	fmt.Println(firstRecurringCharacter([]int{2, 3, 4, 5}))
 }
+
